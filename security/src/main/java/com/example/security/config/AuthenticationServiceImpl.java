@@ -1,4 +1,4 @@
-package com.example.security.service;
+package com.example.security.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -10,7 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserDetailsServiceImpl implements UserDetailsService {
+public class AuthenticationServiceImpl implements UserDetailsService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -21,7 +21,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         System.out.println("==========" + userName);
 
         String password = passwordEncoder.encode("123456");
-        User user = new User(userName, password, AuthorityUtils.commaSeparatedStringToAuthorityList("user,super,niubi"));
+        User user = new User(userName, password, AuthorityUtils.commaSeparatedStringToAuthorityList("user,super,/niubi.html"));
         return user;
     }
 }

@@ -29,13 +29,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/login.html").permitAll()
                 .antMatchers("/error.html").permitAll()
+                .antMatchers("/main.html").permitAll()
                 //?匹配一个字符,*匹配0个或多个字符,**匹配0个或多个目录
                 .antMatchers("/js/**", "/css/**").permitAll()
                 //正则表达式匹配
                 //.regexMatchers("[]").permitAll()
                 //权限控制
-                .antMatchers("/niubi.html").hasAuthority("niubi")
-                .anyRequest().authenticated();
+                //.antMatchers("/niubi.html").hasAuthority("niubi")
+                .anyRequest().access("@authorizationServiceImpl.hasPermission(request, authentication)");
+                //.anyRequest().authenticated();
+
+        //设置访问拒绝处理器
+        http.exceptionHandling()
+                .accessDeniedHandler(new AccessDeniedHandlerImpl());
+
+        //配置logout信息
+//        http.logout()
+//                .logoutUrl("/logout")
+//                .logoutSuccessUrl("/login.html");
 
         http.csrf().disable();
     }

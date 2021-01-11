@@ -6,9 +6,11 @@
 </head>
 <body>
     <form method="post" action="/login">
-        用户名: <input name="username"/>
+        用户名: <input type="text" name="username"/>
         <br/>
-        密 码: <input name="password">
+        密 码: <input type="password" name="password">
+        <br/>
+        记住我: <input type="checkbox" name="remember-me" value="true">
         <br/>
         <input type="submit" value="提交">
     </form>

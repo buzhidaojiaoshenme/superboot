@@ -18,7 +18,7 @@ public class AuthenticationServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 
-        System.out.println("==========" + userName);
+        System.out.println("=====调用自定义的登录逻辑=-=当前登录用户为: " + userName);
 
         String password = passwordEncoder.encode("123456");
         User user = new User(userName, password, AuthorityUtils.commaSeparatedStringToAuthorityList("user,super,/niubi.html"));

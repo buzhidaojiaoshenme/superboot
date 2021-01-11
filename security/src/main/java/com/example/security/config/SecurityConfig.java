@@ -58,13 +58,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.exceptionHandling()
                 .accessDeniedHandler(new AccessDeniedHandlerImpl());
 
-
+        //记住我
+        http.rememberMe()
+                //设置数据源
+                .tokenRepository(persistentTokenRepository)
+                //超时时间
+                .tokenValiditySeconds(60)
+                //自定义登录逻辑
+                .userDetailsService(authenticationServiceImpl);
 
 
         //配置logout信息
-//        http.logout()
-//                .logoutUrl("/logout")
-//                .logoutSuccessUrl("/login.html");
+        http.logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login.html");
 
         http.csrf().disable();
     }

@@ -1,10 +1,29 @@
 package com.example.security;
 
+import com.example.security.entity.User;
+import com.example.security.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.List;
 
 @SpringBootTest
 public class SecurityApplicationTests {
+
+    @Autowired
+    private UserMapper userMapper;
+
+    @Test
+    public void testSelect() {
+        System.out.println("=============================================================");
+        List<User> users = userMapper.selectList(null);
+        users.forEach(System.out::println);
+        System.out.println("=============================================================");
+        User user = userMapper.selectById(2);
+        System.out.println(user);
+        System.out.println("=============================================================");
+    }
 
     @Test
     void contextLoads() {

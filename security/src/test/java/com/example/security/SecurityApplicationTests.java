@@ -2,6 +2,7 @@ package com.example.security;
 
 import com.example.security.entity.User;
 import com.example.security.mapper.UserMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,6 +14,13 @@ public class SecurityApplicationTests {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Test
+    public void testString() {
+        String bundletype = null;
+        boolean b = StringUtils.equalsAny(bundletype, "10", "30", "130");
+        System.out.println(b);
+    }
 
     @Test
     public void testSelect() {

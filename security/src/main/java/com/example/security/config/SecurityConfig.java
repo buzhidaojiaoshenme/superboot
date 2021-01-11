@@ -44,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/login.html").permitAll()
                 .antMatchers("/error.html").permitAll()
-                .antMatchers("/main.html").permitAll()
+                //.antMatchers("/main.html").permitAll()
                 //?匹配一个字符,*匹配0个或多个字符,**匹配0个或多个目录
                 .antMatchers("/js/**", "/css/**").permitAll()
                 //正则表达式匹配

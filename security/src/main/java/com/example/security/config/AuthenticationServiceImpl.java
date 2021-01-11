@@ -21,7 +21,7 @@ public class AuthenticationServiceImpl implements UserDetailsService {
         System.out.println("=====调用自定义的登录逻辑=-=当前登录用户为: " + userName);
 
         String password = passwordEncoder.encode("123456");
-        User user = new User(userName, password, AuthorityUtils.commaSeparatedStringToAuthorityList("user,super,/niubi.html"));
+        User user = new User(userName, password, AuthorityUtils.commaSeparatedStringToAuthorityList("user,super,/niubi.html,/main.html"));
         return user;
     }
 }

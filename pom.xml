@@ -18,6 +18,7 @@
 
     <modules>
         <module>security</module>
+        <module>hello-world</module>
     </modules>
 
     <properties>
